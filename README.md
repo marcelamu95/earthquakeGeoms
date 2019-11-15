@@ -1,5 +1,8 @@
 # Package earthquakeGeoms
 
+ <!-- badges: start -->
+  [![Travis build status](https://travis-ci.org/marcelamu95/earthquakeGeoms.svg?branch=master)](https://travis-ci.org/marcelamu95/earthquakeGeoms)
+  <!-- badges: end -->
 ---
 title: package earthquakeGeoms
 author: Lina Marcela Garzon Muñoz
