@@ -39,18 +39,20 @@
 #'
 #' \dontrun{
 #'
-#' dataset = readr::read_delim("data/signif.txt", delim = "\t") %>%
-#'   eq_clean_data() %>% eq_location_clean("LOCATION_NAME")%>%
-#'   filter(COUNTRY %in% c("USA", "CHINA"), YEAR >= 2000)
+#' filename <- system.file("extdata", "signif.txt", package="earthquakeGeoms")
+#' library(readr)
+#' input <- readr::read_delim(filename, delim = "\t")
 #'
-#' ggplot2::ggplot(input, ggplot2::aes(date,
-#'                                       color = TOTAL_DEATHS,
-#'                                       y = COUNTRY,
-#'                                       size = as.numeric(EQ_PRIMARY) )) +
-#'   geom_timeline(aes(y = COUNTRY)) +
-#'   scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
-#'   scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2)) +
-#'   ggplot2::theme_classic()
+#'  sample <- input %>%
+#'  eq_clean_data() %>%
+#'  eq_location_clean("LOCATION_NAME")%>%
+#'  filter(YEAR >= 2000) %>%
+#'  filter(COUNTRY %in% c("USA", "MEXICO"))
+#'
+#' ggplot2::ggplot(data=sample, aes(x = date, y = COUNTRY, color = DEATHS, size = EQ_PRIMARY)) +
+#'  geom_timeline() +
+#'  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
+#'  scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2))
 #'
 #' }
 #'
@@ -88,7 +90,7 @@ GeomTimeline  <- ggproto(
   }
 )
 
-#' GeomTimeline
+#' geom_timeline
 #'
 #' This function displays the dates of Earthquakes
 #' by presenting each Earthquake, on a straight line,
@@ -112,18 +114,20 @@ GeomTimeline  <- ggproto(
 #'
 #' \dontrun{
 #'
-#' dataset = readr::read_delim("data/signif.txt", delim = "\t") %>%
-#'   eq_clean_data() %>% eq_location_clean("LOCATION_NAME")%>%
-#'   filter(COUNTRY %in% c("USA", "CHINA"), YEAR > 2000)
+#' filename <- system.file("extdata", "signif.txt", package="earthquakeGeoms")
+#' library(readr)
+#' input <- readr::read_delim(filename, delim = "\t")
 #'
-#' ggplot2::ggplot(input, ggplot2::aes(date,
-#'                                       colour = TOTAL_DEATHS,
-#'                                       y = COUNTRY,
-#'                                       size = as.numeric(EQ_PRIMARY) )) +
-#'   geom_timeline() +
-#'   ggplot2::guides(size = ggplot2::guide_legend(title = "Ritcher scale value")) +
-#'   ggplot2::scale_colour_continuous(name = "# of DEATHS") +
-#'   ggplot2::theme_classic()
+#'  sample <- input %>%
+#'  eq_clean_data() %>%
+#'  eq_location_clean("LOCATION_NAME")%>%
+#'  filter(YEAR >= 2000) %>%
+#'  filter(COUNTRY %in% c("USA", "MEXICO"))
+#'
+#' ggplot2::ggplot(data=sample, aes(x = date, y = COUNTRY, color = DEATHS, size = EQ_PRIMARY)) +
+#'  geom_timeline() +
+#'  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
+#'  scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2))
 #'
 #' }
 #'
@@ -151,6 +155,43 @@ geom_timeline <-
   }
 
 
+#' new_theme
+#'
+#' Created a new theme tovisualizes ggplots
+#'
+#' @param legend.position the position of legends.
+#' @param axis.line.y lines for each axis y.
+#' @param axis.line.x lines for each axis x.
+#' @param panel.grid.major.y Specify major grid lines.
+#' @param  ... Extra Params.
+#'
+#' @importFrom ggplot2 layer
+#'
+#' @return This function adds the lineGrobs and pointGrob into the current graphics device.
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' filename <- system.file("extdata", "signif.txt", package="earthquakeGeoms")
+#' library(readr)
+#' input <- readr::read_delim(filename, delim = "\t")
+#'
+#'  sample <- input %>%
+#'  eq_clean_data() %>%
+#'  eq_location_clean("LOCATION_NAME")%>%
+#'  filter(YEAR >= 2000) %>%
+#'  filter(COUNTRY %in% c("USA", "MEXICO"))
+#'
+#' ggplot2::ggplot(data=sample, aes(x = date, y = COUNTRY, color = DEATHS, size = EQ_PRIMARY)) +
+#'  geom_timeline() +
+#'  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
+#'  scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2))+
+#'  new_theme()
+#' }
+#'
+#' @export
+
 
 new_theme <- function(...) {
   ggplot2::theme_classic() +
@@ -160,7 +201,8 @@ new_theme <- function(...) {
       axis.title.y = ggplot2::element_blank(),
       #axis.ticks.y = ggplot2::element_blank(),
       #axis.line.x = ggplot2::element_line(size = 1),
-      #panel.grid.major.y = ggplot2::element_line(color = "gray")
+      panel.grid.major.y = ggplot2::element_line(color = "gray")
     ) +
     ggplot2::theme(...)
 }
+

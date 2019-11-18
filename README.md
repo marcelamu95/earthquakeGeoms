@@ -1,5 +1,7 @@
 # Package earthquakeGeoms
 
+
+
 ---
 title: package earthquakeGeoms
 author: Lina Marcela Garzon Muñoz
@@ -45,9 +47,10 @@ Before using the visualization package you must clean the data with the function
 
 ```{r eval = FALSE}
 clean_data <- eq_clean_data(input = input )
-clean_data <- eq_location_clean(clean_data)
+clean_data <- eq_location_clean(clean_data,"LOCATION_NAME")
 ```
-To visualize the times when earthquakes occur within certain countries, the dates earthquakes occur, the magnitudes (on the Richter scale) and the number of deaths associated with each earthquake you must use the functions "geom_timeline" y geom_timeline_label
+
+To visualize the times when earthquakes occur within certain countries, the dates earthquakes occur, the magnitudes (on the Richter scale) and the number of deaths associated with each earthquake you must use the functions "geom_timeline" y "geom_timeline_label"
 
 
 ```{r eval = FALSE}
@@ -56,16 +59,20 @@ sample <- input %>%
   eq_location_clean("LOCATION_NAME")%>%
   filter(YEAR >= 2000) %>%
   filter(COUNTRY %in% c("USA", "MEXICO"))
-
-ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) + geom_timeline() +
- geom_timeline_label(data=sample_USA,aes(label=LOCATION_NAME),n_max=8) + 
- scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
-  geom_timeline(aes(y = COUNTRY, color=DEATHS, size = EQ_PRIMARY)) +
- scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2)) +
-  new_theme()
+  ggplot(data = sample, aes(x = date, y = COUNTRY, label = LOCATION_NAME)) +
+  geom_timeline() +
+  geom_timeline_label(data = sample, aes(label = LOCATION_NAME), n_max =
+                        8) +
+  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
+  geom_timeline(aes(
+    y = COUNTRY,
+    color = DEATHS,
+    size = EQ_PRIMARY
+  )) +
+  scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2)) + new_theme()
 ```
 
-for visualize aerthquake in space use the function "eq_map" for mapping the earthquake epicenters and providing some annotations with the mapped data  ( Each earthquake shown with a circle, and the radius of the circle is proportional to the earthquake's magnitude (EQ_PRIMARY)
+For visualize aerthquake in space use the function "eq_map" for mapping the earthquake epicenters and providing some annotations with the mapped data  ( Each earthquake shown with a circle, and the radius of the circle is proportional to the earthquake's magnitude (EQ_PRIMARY)
 
  ```{r eval = FALSE}
 clean_data %>%

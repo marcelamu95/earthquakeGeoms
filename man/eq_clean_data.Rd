@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_data.R
 \name{eq_clean_data}
 \alias{eq_clean_data}
-\title{clean_data}
+\title{eq_clean_data}
 \usage{
 eq_clean_data(input)
 }

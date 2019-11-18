@@ -20,4 +20,5 @@ Depends:
  readr,
  stringr,
  scales,
+ leaflet,
  ggplot2

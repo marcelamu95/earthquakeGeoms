@@ -40,18 +40,20 @@ missing, the first \code{nmax} labels will be displayed). \cr \cr
 
 \dontrun{
 
-dataset = readr::read_delim("data/signif.txt", delim = "\\t") \%>\%
-  eq_clean_data() \%>\% eq_location_clean("LOCATION_NAME")\%>\%
-  filter(COUNTRY \%in\% c("USA", "CHINA"), YEAR >= 2000)
+filename <- system.file("extdata", "signif.txt", package="earthquakeGeoms")
+library(readr)
+input <- readr::read_delim(filename, delim = "\\t")
 
-ggplot2::ggplot(input, ggplot2::aes(date,
-                                      color = TOTAL_DEATHS,
-                                      y = COUNTRY,
-                                      size = as.numeric(EQ_PRIMARY) )) +
-  geom_timeline(aes(y = COUNTRY)) +
-  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
-  scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2)) +
-  ggplot2::theme_classic()
+ sample <- input \%>\%
+ eq_clean_data() \%>\%
+ eq_location_clean("LOCATION_NAME")\%>\%
+ filter(YEAR >= 2000) \%>\%
+ filter(COUNTRY \%in\% c("USA", "MEXICO"))
+
+ggplot2::ggplot(data=sample, aes(x = date, y = COUNTRY, color = DEATHS, size = EQ_PRIMARY)) +
+ geom_timeline() +
+ scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
+ scale_color_continuous(name = '# of Deaths', guide = guide_colorbar(order = 2))
 
 }
 
