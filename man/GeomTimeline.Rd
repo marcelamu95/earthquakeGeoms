@@ -9,7 +9,7 @@
 GeomTimeline
 }
 \value{
-
+foplotting a time line of earthquakes ranging from xmin to xmaxdates with a point for each earthquake
 }
 \description{
 for plotting a time line of earthquakes ranging from xmin

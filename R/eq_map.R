@@ -11,7 +11,7 @@
 #'
 #' @return A map of the earthquakes epicenters and providing some annotations
 #'
-#'#' @examples
+#' @examples
 #' \dontrun{
 #' readr::read_delim("signif.txt", delim = "\t") %>%
 #' eq_clean_data() %>%
@@ -37,7 +37,7 @@ eq_map <- function(data_map,annot_col="date"){
 #'
 #' Created description of the earthquake next to the graph
 #'
-#' @param mapdata A cleaned data frame with data obtained from NOAA website
+#' @param map_data A cleaned data frame with data obtained from NOAA website
 #'
 #' @return An HTML label that can be used as the annotation text in the leaflet map.
 #'
@@ -52,6 +52,7 @@ eq_map <- function(data_map,annot_col="date"){
 #' }
 #'
 #' @export
+
 eq_create_label<- function(map_data){
 
   paste(ifelse(is.na(map_data$LOCATION_NAME),"", paste("<b>Location: </b>",map_data$LOCATION_NAME,"<br/>")),

@@ -19,6 +19,7 @@ Depends:
  dplyr,
  readr,
  stringr,
+ grid,
  scales,
  leaflet,
  ggplot2

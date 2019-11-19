@@ -28,7 +28,7 @@ geom_timeline_label(mapping = NULL, data = NULL, stat = "identity",
 \item{...}{Extra Params.}
 }
 \value{
-
+for adding annotations to the earthquake data
 }
 \description{
 GeomTimeLineLabel Geom coding
@@ -47,7 +47,7 @@ input <- readr::read_delim(filename, delim = "\\t")
  filter(YEAR >= 2000) \%>\%
  filter(COUNTRY \%in\% c("USA", "MEXICO"))
 
-ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) +
+ ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) +
  geom_timeline() +
  geom_timeline_label(data=sample,aes(label=LOCATION_NAME),n_max=8) +
  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +

@@ -13,14 +13,6 @@ eq_map(data_map, annot_col = "date")
 }
 \value{
 A map of the earthquakes epicenters and providing some annotations
-
-#' @examples
-\dontrun{
-readr::read_delim("signif.txt", delim = "\t") %>%
-eq_clean_data() %>%
-  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(date) >= 2000) %>%
-  eq_map(annot_col = "date")
-}
 }
 \description{
 Takes an argument data containing the filtered data frame
@@ -28,4 +20,13 @@ with earthquakes to visualize.
 The function maps the epicenters (LATITUDE/LONGITUDE)
 and annotates each point with in pop up window containing
 annotation data stored in a column of the data frame.
+}
+\examples{
+\dontrun{
+readr::read_delim("signif.txt", delim = "\\t") \%>\%
+eq_clean_data() \%>\%
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(date) >= 2000) \%>\%
+  eq_map(annot_col = "date")
+}
+
 }

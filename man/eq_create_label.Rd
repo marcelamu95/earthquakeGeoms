@@ -7,7 +7,7 @@
 eq_create_label(map_data)
 }
 \arguments{
-\item{mapdata}{A cleaned data frame with data obtained from NOAA website}
+\item{map_data}{A cleaned data frame with data obtained from NOAA website}
 }
 \value{
 An HTML label that can be used as the annotation text in the leaflet map.

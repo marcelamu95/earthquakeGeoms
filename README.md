@@ -1,7 +1,9 @@
 # Package earthquakeGeoms
+
  <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/marcelamu95/earthquakeGeoms.svg?branch=master)](https://travis-ci.org/marcelamu95/earthquakeGeoms)
   <!-- badges: end -->
+  
 ---
 title: package earthquakeGeoms
 author: Lina Marcela Garzon Muñoz
@@ -10,7 +12,6 @@ date: 2019-11-15
 ---
 
 ## Data used in the package
-
 
 This package will be centered around a dataset obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA) on significant earthquakes around the world. This dataset contains information about 5,933 earthquakes over an approximately 4,000 year time span
 

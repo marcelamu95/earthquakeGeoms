@@ -13,11 +13,11 @@
 #'
 #' @importFrom ggplot2 layer
 #'
-#' @return
+#' @return for adding annotations to the earthquake data
 #'
 #' @examples
 #'
-#'  \dontrun{
+#' \dontrun{
 #'
 #' filename <- system.file("extdata", "signif.txt", package="earthquakeGeoms")
 #' library(readr)
@@ -29,7 +29,7 @@
 #'  filter(YEAR >= 2000) %>%
 #'  filter(COUNTRY %in% c("USA", "MEXICO"))
 #'
-#' ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) +
+#'  ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) +
 #'  geom_timeline() +
 #'  geom_timeline_label(data=sample,aes(label=LOCATION_NAME),n_max=8) +
 #'  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +
@@ -121,7 +121,7 @@ GeomTimeLineLabel <- ggproto(
 #' @importFrom grid segmentsGrob gpar textGrob gList
 #' @importFrom dplyr slice arrange_ group_by_ %>%
 #'
-#' @return
+#' @return for adding annotations to the earthquake data
 #'
 #' @examples
 #'
@@ -137,7 +137,7 @@ GeomTimeLineLabel <- ggproto(
 #'  filter(YEAR >= 2000) %>%
 #'  filter(COUNTRY %in% c("USA", "MEXICO"))
 #'
-#' ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) +
+#'  ggplot(data = sample, aes(x=date,y=COUNTRY, label=LOCATION_NAME)) +
 #'  geom_timeline() +
 #'  geom_timeline_label(data=sample,aes(label=LOCATION_NAME),n_max=8) +
 #'  scale_size_continuous(name = 'Richter scale value', guide = guide_legend(order = 1)) +

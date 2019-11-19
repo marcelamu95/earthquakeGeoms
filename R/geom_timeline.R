@@ -33,7 +33,7 @@
 #' @importFrom ggplot2 draw_key_point
 #' @importFrom ggplot2 Geom
 #'
-#' @return
+#' @return foplotting a time line of earthquakes ranging from xmin to xmaxdates with a point for each earthquake
 #'
 #' @examples
 #'
@@ -159,10 +159,6 @@ geom_timeline <-
 #'
 #' Created a new theme tovisualizes ggplots
 #'
-#' @param legend.position the position of legends.
-#' @param axis.line.y lines for each axis y.
-#' @param axis.line.x lines for each axis x.
-#' @param panel.grid.major.y Specify major grid lines.
 #' @param  ... Extra Params.
 #'
 #' @importFrom ggplot2 layer
@@ -191,7 +187,6 @@ geom_timeline <-
 #' }
 #'
 #' @export
-
 
 new_theme <- function(...) {
   ggplot2::theme_classic() +

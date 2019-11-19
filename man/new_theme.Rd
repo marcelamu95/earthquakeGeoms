@@ -8,14 +8,6 @@ new_theme(...)
 }
 \arguments{
 \item{...}{Extra Params.}
-
-\item{legend.position}{the position of legends.}
-
-\item{axis.line.y}{lines for each axis y.}
-
-\item{axis.line.x}{lines for each axis x.}
-
-\item{panel.grid.major.y}{Specify major grid lines.}
 }
 \value{
 This function adds the lineGrobs and pointGrob into the current graphics device.
